@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -42,7 +43,6 @@ typedef struct bus_s
 } bus_t;
 
 extern bus_t bus;
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -57,14 +57,18 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 ssize_t getstdin(char **lineptr, int file);
-char  *clean_line(char *content);
-void m_push(stack_t **head, unsigned int count);
-void m_pall(stack_t **head, unsigned int count);
-void m_pint(stack_t **head, unsigned int number);
-int execute(char *content, stack_t **head, unsigned int count, FILE *file);
+
+char *clean_line(char *content);
 void free_stack(stack_t *head);
+
+int execute(char *content, stack_t **head, unsigned int count, FILE *file);
+
+void m_pall(stack_t **head, unsigned int number);
+void m_push(stack_t **head, unsigned int number);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
 #endif

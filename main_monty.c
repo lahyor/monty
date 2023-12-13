@@ -1,4 +1,6 @@
 #include "monty.h"
+#define _GNU_SOURCE
+
 bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
@@ -8,13 +10,13 @@ bus_t bus = {NULL, NULL, NULL, 0};
  * Return: Always 0 on success
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	char *content;
 	FILE *file;
-	size_t life = 0;
+	size_t size = 0;
 	ssize_t read_line = 1;
-	stack_t *stack = 0;
+	stack_t *stack = NULL;
 	unsigned int count = 0;
 
 	if (argc != 2)
@@ -22,8 +24,10 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
 	file = fopen(argv[1], "r");
 	bus.file = file;
+
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -32,14 +36,13 @@ int main(int argc, char **argv)
 	while (read_line > 0)
 	{
 		content = NULL;
-		read_line = getline(&content, &life, file);
+		read_line = getline(&content, &size, file);
 		bus.content = content;
 		count++;
+
 		if (read_line > 0)
-		{
 			execute(content, &stack, count, file);
-			free(content);
-		}
+
 		free(content);
 	}
 	free_stack(stack);
