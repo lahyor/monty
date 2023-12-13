@@ -1,4 +1,5 @@
 #include "monty.h"
+bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * main - it interpretes the monty code
@@ -15,8 +16,6 @@ int main(int argc, char **argv)
 	ssize_t read_line = 1;
 	stack_t *stack = 0;
 	unsigned int count = 0;
-
-	bus_t local_bus = {NULL, NULL, NULL, 0};
 
 	if (argc != 2)
 	{
