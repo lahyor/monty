@@ -18,6 +18,7 @@ int execute(char *content, stack_t **stack, unsigned int count, FILE *file)
 		{"add", m_add},
 		{"nop", m_nop},
 		{"sub", m_sub},
+		{"div", m_div},
 		{NULL, NULL}
 	};
 	unsigned int x = 0;
