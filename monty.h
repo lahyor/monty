@@ -72,6 +72,7 @@ void m_push(stack_t **head, unsigned int number);
 void m_pint(stack_t **head, unsigned int count);
 void m_pop(stack_t **head, unsigned int count);
 void m_swap(stack_t **head, unsigned int count);
+void m_add(stack_t **head, unsigned int count);
 
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
