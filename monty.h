@@ -79,6 +79,13 @@ void m_div(stack_t **head, unsigned int count);
 void m_mul(stack_t **head, unsigned int count);
 void m_mod(stack_t **head, unsigned int count);
 
+void m_pchar(stack_t **head, unsigned int count);
+void m_pstr(stack_t **head, unsigned int count);
+void m_rotl(stack_t **head,  __attribute__((unused)) unsigned int count);
+void m_rotr(stack_t **head, __attribute__((unused)) unsigned int count);
+
+
+
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
 #endif
